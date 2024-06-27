@@ -1,21 +1,43 @@
-export interface Post {
-	userId: number;
-	id: number;
-	title: string;
-	body: string;
-}
+export type UserID = number;
+export type PostID = number;
 
 export interface User {
-	id: number;
+	id: Required<UserID>;
 	name: string;
 	username: string;
-	email: string;
+	email: Readonly<string>;
+	address?: Address;
+	company?: Partial<Company>
+}
+
+export interface Address {
+	street: string;
+	suite: string;
+	city: string;
+	zipcode: string;
+}
+
+interface Company {
+    name: string;
+    catchPhrase: string;
+    bs: string;
+}
+
+export interface Post {
+	userId: UserID;
+	id: PostID;
+	title: string;
+	body: string | undefined;
 }
 
 export interface Comment {
-	postId: number;
+	postId: PostID;
 	id: number;
 	name: string;
 	email: string;
 	body: string;
 }
+
+export type PartialPost = Partial<Post>;
+export type RequiredComment = Required<Comment>;
+export type ReadonlyUser = Readonly<User>;

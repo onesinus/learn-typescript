@@ -18,7 +18,7 @@ export async function fetchData<T>(url: string): Promise<T> {
 		const response = await axios.get<T>(url);
 		return response.data
 	} catch(error) {
-		throw new Error(`Error fetching data from url ${url}`);
+	    throw new Error(`Error fetching data from url ${url}: ${error}`);
 	}
 }
 

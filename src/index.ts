@@ -6,6 +6,7 @@ async function main() {
 	await postManager.loadUsers();
 	await postManager.loadComments();
 	postManager.displayPosts();
+	postManager.managePosts();
 
 }
 
